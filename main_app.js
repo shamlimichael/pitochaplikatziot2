@@ -95,6 +95,16 @@ function startup_posts()
                             <div class="post_main">
                                 <img src="${post.image}" class="post_img">
                                 <img src="longahhproject/heart-fill.svg" class="like_popup" id="like_popup_${post.id}">
+                                <div class="comment_section" id="comment_section_nu${post.id}" style="display:none">
+                                    <div class="comment_list" id="comment_list_nu${post.id}">
+
+                                    </div>
+                                    <span class="typing_indicator" id="typing_nu${post.id}" style="display:none">typing a comment...</span>
+                                    <div class="commentbar" id="commentbar_nu${post.id}">
+                                        <input type="text" class="typecom" id="typecom_nu${post.id}" placeholder="What did you think about the post?" oninput="typingIndicator(${post.id})">
+                                        <img src="longahhproject/paper-plane-tilt.svg" class="send_comment" id="send_comment_nu${post.id}" onclick="SendYourComment(${post.id})">
+                                    </div>
+                                </div>
                             </div>
                             <div class="post_engage">
                                 <div class="engage_left">
@@ -102,9 +112,9 @@ function startup_posts()
                                         <img src="longahhproject/heart.svg" class="post_engage_icon" id="heart_engage_${post.id}">
                                         <span class="engage_number" id="numlikes_${post.id}" >${post.likes}</span>
                                     </div>
-                                    <div class="engage_comment">
-                                        <img src="longahhproject/comments.svg" class="post_engage_icon">
-                                        <span class="engage_number">${post.comments.length}</span>
+                                    <div class="engage_comment" onclick="toggleComments(${post.id})">
+                                        <img src="longahhproject/comments.svg" class="post_engage_icon"  >
+                                        <span class="engage_number" id="numcomments_nu${post.id}">${post.comments.length}</span>
                                     </div>
                                     <div class="engage_repost">
                                         <img src="longahhproject/repost.svg" class="post_engage_icon">
@@ -149,5 +159,47 @@ function filterPosts()
             posthide.style.display = "block";
     })
 }
+
+function toggleComments(id)
+{
+    let section = document.getElementById("comment_section_nu" + id);
+    if (section.style.display === "none")
+        section.style.display = "block";
+    else
+        section.style.display = "none";
+}
+
+function SendYourComment(id)
+{
+    let content = document.getElementById("typecom_nu" + id).value;
+    if (content === "") return;
+    let thepost;
+    document.getElementById("typecom_nu" + id).value = "";
+    posts.forEach(post=>{
+        if (id == post.id)
+            thepost = post;
+    })
+    thepost.comments.unshift(content);
+    let commentList = document.getElementById("comment_list_nu" + id);
+    commentList.innerHTML += `<div class="comment_item">
+        <span class="username_com"> You </span><br>
+        <span class="content_com">${content}</span>
+        </div> <br><br>`;
+    document.getElementById("typing_nu" + id).style.display = "none";
+    document.getElementById("typecom_nu" + id).value = "";
+    document.getElementById("numcomments_nu"+ id ).innerHTML = thepost.comments.length;
+    
+}
+
+function typingIndicator(id)
+{
+    let input = document.getElementById("typecom_nu" + id).value;
+    let indicator = document.getElementById("typing_nu" + id);
+    if (input !== "")
+        indicator.style.display = "block";
+    else
+        indicator.style.display = "none";
+}
+
 
 startup_posts()
