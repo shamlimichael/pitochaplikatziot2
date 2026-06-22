@@ -2,6 +2,7 @@ const loginBtn = document.getElementById("log-in");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("pass");
 const emailLink = loginBtn.closest("a");
+const iconbutton = document.getElementById("icon");
 
 
 loginBtn.addEventListener("click", function (e) 
@@ -15,7 +16,7 @@ loginBtn.addEventListener("click", function (e)
         emailInput.style.border = "1px solid red";
         emailInput.placeholder = "Enter your email";
     }
-    if (!correct_password(email)) 
+    if (!correct_password(password)) 
     {
         e.preventDefault();
         passwordInput.style.border = "1px solid red";
@@ -75,3 +76,23 @@ function correct_password(password)
 
     return true;
 }
+
+const icon = document.querySelector("#icon img");
+
+iconbutton.addEventListener("click", function()
+{
+    if (passwordInput.type === "password") 
+    {
+        passwordInput.type = "text";
+        icon.src = "longahhproject/eye-light.svg";
+        icon.style.width = "3.5rem";
+        icon.style.length = "3.5rem";
+    }
+    else
+    {
+        passwordInput.type = "password";
+        icon.src = "longahhproject/eye-slash-light.svg";
+        icon.style.width = "2.5rem";
+        icon.style.length = "2.5rem";
+    }
+});
