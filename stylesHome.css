@@ -62,11 +62,25 @@ body
     position: absolute;
     right: 1rem;
     top: 50%;
-    transform: translateY(-130%);
+    transform: translateY(-60%);
     color: #aaa;
-    font-size: clamp(2.3rem, 5vw, 2.3rem);
+    padding: 0;
+    line-height: 0;
     cursor: pointer;
     z-index: 10;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    background: none;
+    border-radius: 0%;
+    filter: invert(1)
+}
+#icon img
+{
+    object-fit: contain;
+    width: 2.5rem;
+    height: 2.5rem;
+
 }
 
 .password-wrapper 
@@ -92,6 +106,12 @@ body
     right: 0;
     text-align: right;
     cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.hyper_text:hover
+{
+    color: rgb(104, 199, 254);
 }
 
 #text1
@@ -103,7 +123,7 @@ body
 
 #log-in
 {
-    background-color: rgb(43, 150, 216);
+    background-color: rgb(44, 150, 216);
     color: white;
     font-family: 'Arial', unset;
     display: flex;
