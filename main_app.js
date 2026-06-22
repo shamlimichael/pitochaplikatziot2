@@ -49,7 +49,34 @@ let posts = [
     }
 ]
 
-function startup_posts(){
+function likeorunlike(IDofpost)
+{
+    let postTolike;
+    posts.forEach(post=>
+    {
+        if (post.id == IDofpost)
+            postTolike= post;
+    })
+    postTolike.isLiked = !postTolike.isLiked;
+    if (postTolike.isLiked == true)
+    {
+        document.getElementById("heart_engage_" + IDofpost).src = "longahhproject/heart-fill.svg";
+        postTolike.likes++;
+        let popup = document.getElementById("like_popup_" + IDofpost);
+        popup.classList.remove("heart_pop");
+        void popup.offsetWidth
+        popup.classList.add("heart_pop");
+    }   
+    else
+    {
+        document.getElementById("heart_engage_" + IDofpost).src = "longahhproject/heart.svg";
+        postTolike.likes--;
+    } 
+    document.getElementById("numlikes_" + IDofpost).innerHTML = postTolike.likes;
+}
+
+function startup_posts()
+{
     let container = document.querySelector(".post_container");
     posts.forEach(post => {
         let postHTML = `<div class="posts_div">
@@ -67,12 +94,13 @@ function startup_posts(){
                             </div>
                             <div class="post_main">
                                 <img src="${post.image}" class="post_img">
+                                <img src="longahhproject/heart-fill.svg" class="like_popup" id="like_popup_${post.id}">
                             </div>
                             <div class="post_engage">
                                 <div class="engage_left">
-                                    <div class="engage_like">
-                                        <img src="longahhproject/heart.svg" class="post_engage_icon">
-                                        <span class="engage_number">${post.likes}</span>
+                                    <div class="engage_like" onclick="likeorunlike(${post.id})">
+                                        <img src="longahhproject/heart.svg" class="post_engage_icon" id="heart_engage_${post.id}">
+                                        <span class="engage_number" id="numlikes_${post.id}" >${post.likes}</span>
                                     </div>
                                     <div class="engage_comment">
                                         <img src="longahhproject/comments.svg" class="post_engage_icon">

@@ -392,3 +392,28 @@ a, .dot, .app_sign{
     border-radius: 10px;
     text-decoration: underline;
 }
+
+
+.post_main {
+    position: relative;
+}
+
+.like_popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    filter:invert(1);
+    opacity: 0;
+}
+
+@keyframes popHeart {
+    0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+    50%  { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+}
+
+.heart_pop {
+    animation: popHeart 0.8s ease forwards;
+}
