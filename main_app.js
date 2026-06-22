@@ -79,7 +79,7 @@ function startup_posts()
 {
     let container = document.querySelector(".post_container");
     posts.forEach(post => {
-        let postHTML = `<div class="posts_div">
+        let postHTML = `<div class="posts_div" id="post_nu${post.id}">
                             <div class="post_header">
                                 <div class="header_left">
                                     <img src="${post.pfp}" class="pfp_header_post">
@@ -126,6 +126,27 @@ function startup_posts()
                         </div>`
 
         container.innerHTML += postHTML
+    })
+}
+
+function searchfunc()
+{
+    let bar = document.getElementById("search_bar");
+    if (bar.style.display === "none" || bar.style.display === "")
+        bar.style.display = "block";
+    else
+        bar.style.display = "none";
+}
+
+function filterPosts()
+{
+    let target = document.getElementById("search_bar").value;
+    posts.forEach(post=> {
+        let posthide = document.getElementById("post_nu" + post.id);
+        if (!(post.caption.toLowerCase().includes(target.toLowerCase())))
+            posthide.style.display = "none";
+        else
+            posthide.style.display = "block";
     })
 }
 

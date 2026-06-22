@@ -17,7 +17,7 @@
                 <img src="longahhproject\house.svg" class="sidebar_icons">
                 <img src="longahhproject\play.svg" class="sidebar_icons">
                 <img src="longahhproject\paper-plane-tilt.svg" class="sidebar_icons">
-                <img src="longahhproject\magnifying-glass.svg" class="sidebar_icons">
+                <img src="longahhproject\magnifying-glass.svg" class="sidebar_icons" onclick="searchfunc()">
                 <img src="longahhproject\compass.svg" class="sidebar_icons">
                 <img src="longahhproject\heart.svg" class="sidebar_icons">
                 <img src="longahhproject\plus.svg" class="sidebar_icons">
@@ -27,6 +27,9 @@
         </div>
         <div class="notsidebar_div">
             <div class="main_column_div">
+                <div class="search_engine">
+                    <input type="text" placeholder="What you looking for?" id="search_bar" oninput="filterPosts()">
+                </div>
                 <div class="stories_div">
                     <div class="story_item">
                         <div class="story_ring">

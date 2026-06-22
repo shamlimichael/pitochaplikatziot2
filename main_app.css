@@ -88,6 +88,7 @@ body{
     width: 823.17px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
 }
 
 .posts_div{
@@ -416,4 +417,15 @@ a, .dot, .app_sign{
 
 .heart_pop {
     animation: popHeart 0.8s ease forwards;
+}
+
+#search_bar{
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    top: 140px;
+    border-radius: 20px;
+    height: 40px;
 }
