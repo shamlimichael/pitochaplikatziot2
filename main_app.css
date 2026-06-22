@@ -429,3 +429,51 @@ a, .dot, .app_sign{
     border-radius: 20px;
     height: 40px;
 }
+
+.comment_section{
+    background-color: rgb(46, 46, 46);
+    position: absolute;
+    right: 100%;
+    top: 0;
+    width: 350px;
+    height: 100%;
+    border-radius: 15px;
+    padding-top: 8px;
+}
+
+.commentbar
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px 10px;
+    position: absolute;
+    bottom: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.typecom{
+    width: 80%;
+    border-radius: 20px;
+}
+
+.content_com,.username_com,.typing_indicator{
+    color: white;
+}
+
+.comment_item{
+    padding-left: 10px;
+}
+
+.username_com{
+    font-weight: bold;
+}
+
+.send_comment{
+    filter: invert(1);
+}
+.typing_indicator{
+    font-style: italic;
+    padding-left: 10px;
+}
