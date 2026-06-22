@@ -1,0 +1,394 @@
+/*Michael-Shamli-219489044-Roy-Usarov-334862018-Ofek-Cohen-218519189*/
+
+
+body{
+    background-color: #0C1014;
+    margin: 0;
+}
+
+.main_div{
+    display:flex;
+}
+
+.sidebar_div{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    padding: 20px 20px;
+    box-sizing: border-box;
+    position: fixed;
+}
+
+.sidebar_icons{
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    filter: invert(1);
+    box-sizing: border-box;
+    padding: 8px 8px;
+}
+
+.sidebar_center_div{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stories_div {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    width: fit-content;
+    margin-bottom: 50px;
+}
+
+.story_pfp {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #0C1014;
+    box-sizing: border-box;
+}
+
+.story_ring {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    padding: 3px;
+}
+
+
+.story_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.story_username {
+    color: white;
+    font-size: 16px;
+}
+
+.sidebar_icons,.story_item {
+    cursor: pointer;
+}
+
+.sidebar_icons:active,.story_item:active {
+    transform: scale(0.9);
+}
+
+.main_column_div{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    width: 823.17px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.posts_div{
+    width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post_img{
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+.post_header{
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 15px;
+}
+
+.pfp_header_post{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 7px;
+}
+
+.header_item, .follow_header, .when_posted{
+    font-size: 20px;
+}
+
+.header_right, .header_left{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.verfied_header{
+    width: 20px;
+    height: 20px;
+}
+
+
+
+.header_item{
+    color: white;
+}
+
+.follow_header{
+    color: lightskyblue;
+    padding-right: 7px;
+}
+
+.when_posted{
+    color: darkgray;
+}
+
+.post_engage_icon, .engage_number{
+    filter: invert(1);
+}
+
+.post_engage{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+    box-sizing: border-box;
+}
+
+.engage_left{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap:4px;
+}
+
+.engage_like, .engage_comment, .engage_repost{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.title_username{
+    font-weight: bold;
+    color: white;
+    font-size: 18px;
+}
+
+.verfied_title{
+    width: 20px;
+    height: 20px;
+}
+
+.post_desc{
+    color: white;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.post_title{
+    display: flex;
+    padding: 5px 15px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.post_container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.notsidebar_div{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.follow_suggest_container{
+    width: 500px;
+    padding-top: 50px;
+    padding-left: 90px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.suggest_pfp{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    padding-right: 9px;
+}
+
+.your_profile, .follow_suggest, .suggest_left, .your_info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.suggest_text{
+    display: flex;
+    flex-direction: column;
+    gap:2px;
+}
+
+.suggest_username{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.suggest_tip{
+    color: darkgray;
+    font-size: 18px;
+}
+
+.suggest_username{
+    font-weight: bold;
+}
+
+.suggest_title_seperation{
+    color: white;
+    font-size: 25px;
+}
+
+.seperation_suggest{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px 0px;
+}
+
+.follow_suggest, .your_profile{
+    justify-content: space-between;
+    align-items: center;
+}
+
+.follow_suggest_button{
+    color: lightskyblue;
+    font-size: 20px;
+}
+
+.only_suggest_container{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+
+a, .dot, .app_sign{
+    color: darkgray;
+}
+
+.app_info{
+    margin-top: 20px;
+}
+
+.sidebar_icons:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar_icons{
+    border-radius: 10%;
+    transition: background-color 0.2s ease;
+}
+
+.username_header{
+    cursor: pointer;
+    transition: color 0.1s ease;
+}
+
+.username_header:hover{
+    color: darkgray;
+    text-decoration: underline;
+}
+
+.follow_header,.three_dots{
+    cursor: pointer;
+    padding: 8px 8px;
+    border-radius: 10%;
+    transition: background-color 0.2s ease;
+}
+
+.follow_header:active,.three_dots:active {
+    transform: scale(0.95);
+}
+
+.follow_header:hover {
+    background-color: rgba(135, 206, 250, 0.4);
+}
+
+.three_dots:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.engage_like, .engage_comment, .engage_repost, .engage_share, .engage_right{
+    cursor: pointer;
+    border-radius: 20%;
+    padding: 4px 4px;
+    transition: background-color 0.2s ease;
+}
+
+.engage_like:hover {
+    background-color: rgba(216, 48, 48, 0.5);
+}
+
+.engage_comment:hover, .engage_share:hover{
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.engage_repost:hover{
+    background-color: rgba(3, 124, 29, 0.4);
+}
+
+.engage_right:hover{
+    background-color: rgba(238, 234, 7, 0.4);
+}
+
+.engage_like:active, .engage_comment:active, .engage_repost:active, .engage_share:active, .engage_right:active {
+    transform: scale(0.95);
+}
+
+.follow_suggest_button:hover{
+    text-decoration: underline;
+}
+
+.follow_suggest_button, .suggest_username{
+    cursor: pointer;
+    width: fit-content;
+    padding: 4px 4px;
+}
+
+.follow_suggest_button:active{
+    transform: scale(0.95);
+}
+
+.suggest_username:hover{
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    text-decoration: underline;
+}
+
+.suggest_username:active, #see_all:active{
+    transform: scale(0.95);
+}
+
+#see_all{
+    cursor: pointer;
+    width: fit-content;
+    padding: 4px 4px;
+}
+
+#see_all:hover{
+    border-radius: 10px;
+    text-decoration: underline;
+}
