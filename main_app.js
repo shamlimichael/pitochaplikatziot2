@@ -400,3 +400,7 @@ function copyLink()
     navigator.clipboard.writeText("Copied!");
     document.getElementById("copy_confirm").style.display = "block";
 }
+function toggleMode()
+{
+    document.body.classList.toggle("light_mode");
+}
