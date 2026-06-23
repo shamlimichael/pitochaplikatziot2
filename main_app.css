@@ -276,8 +276,15 @@ body{
 }
 
 .follow_suggest_button{
+    cursor: pointer;
+    border-radius: 10%;
     color: lightskyblue;
     font-size: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.follow_suggest_button:hover{
+    background-color: rgba(135, 206, 250, 0.4);
 }
 
 .only_suggest_container{
@@ -357,10 +364,6 @@ a, .dot, .app_sign{
 
 .engage_like:active, .engage_comment:active, .engage_repost:active, .engage_share:active, .engage_right:active {
     transform: scale(0.95);
-}
-
-.follow_suggest_button:hover{
-    text-decoration: underline;
 }
 
 .follow_suggest_button, .suggest_username{
@@ -488,4 +491,14 @@ a, .dot, .app_sign{
     width: 50px;
     height: 50px;
     cursor: pointer;
+}
+
+@keyframes postAppear {
+    0%   { background-color: rgba(255, 255, 255, 0.15); }
+    100% { background-color: transparent; }
+}
+
+.post_flash {
+    animation: postAppear 2.0s ease forwards;
+    border-radius: 15px;
 }

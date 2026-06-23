@@ -78,7 +78,7 @@ function correct_password(password)
         missing.innerHTML = "password must contian a capital letter";
         return false;
     }
-    if (!/[0-9]/.test(password) || !/[!@#$%^&*]/.test(password))
+    if (!/[0-9]/.test(password) && !/[!@#$%^&*]/.test(password))
     {
         missing.innerHTML = "password must contian a number or a special symbol";
         return false;

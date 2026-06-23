@@ -9,18 +9,41 @@
     <title>Document</title>
     <link rel="stylesheet" href="main_app.css">
 </head>
+
+<div id="create_modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center;">
+    <div style="background:#1a1a1a; padding:2rem; border-radius:1rem; display:flex; flex-direction:column; gap:1rem; width:400px;">
+        <h2 style="color:white; margin:0;">Create Post</h2>
+        <input id="modal_caption" type="text" placeholder="Write a caption..." style="padding:0.8rem; border-radius:0.5rem; border:none; background:#303030; color:white; font-size:1rem;">
+        <input id="modal_image" type="text" placeholder="Paste image URL..." style="padding:0.8rem; border-radius:0.5rem; border:none; background:#303030; color:white; font-size:1rem;">
+        <select id="modal_type" style="padding:0.8rem; border-radius:0.5rem; border:none; background:#303030; color:white; font-size:1rem; cursor: pointer;">
+            <option value="image">Image Post</option>
+            <option value="text">Text Only Post</option>
+            <option value="video">Video Post (Static)</option>
+        </select>
+        <div style="display:flex; gap:1rem;">
+            <button onclick="submitNewPost()" style="flex:1; padding:0.8rem; background:lightskyblue; border:none; border-radius:0.5rem; cursor:pointer; font-size:1rem;">Post</button>
+            <button onclick="closeModal()" style="flex:1; padding:0.8rem; background:#303030; color:white; border:none; border-radius:0.5rem; cursor:pointer; font-size:1rem;">Cancel</button>
+        </div>
+    </div>
+</div>
+
 <body>
+    <!-- New Post Toast Notification Banner -->
+    <div id="new_post_notification" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: lightskyblue; color: #0C1014; padding: 12px 24px; border-radius: 25px; font-weight: bold; z-index: 9999; box-shadow: 0 4px 15px rgba(0,0,0,0.6); font-family: sans-serif; opacity: 0; transition: opacity 0.3s ease;">
+        There is a new post!
+    </div>
+
     <div class="main_div">
         <div class="sidebar_div">
             <img src="longahhproject\instagram-logo.svg" class="sidebar_icons">
             <div class="sidebar_center_div">
-                <img src="longahhproject\house.svg" class="sidebar_icons">
+                <img src="longahhproject\house.svg" class="sidebar_icons">a
                 <img src="longahhproject\play.svg" class="sidebar_icons">
                 <img src="longahhproject\paper-plane-tilt.svg" class="sidebar_icons">
                 <img src="longahhproject\magnifying-glass.svg" class="sidebar_icons" onclick="searchfunc()">
                 <img src="longahhproject\compass.svg" class="sidebar_icons">
                 <img src="longahhproject\heart.svg" class="sidebar_icons">
-                <img src="longahhproject\plus.svg" class="sidebar_icons">
+                <img src="longahhproject\plus.svg" class="sidebar_icons" onclick="openModal()" id="post_button">
                 <img src="longahhproject\user.svg" class="sidebar_icons">
             </div>
             <img src="longahhproject\list.svg" class="sidebar_icons">
@@ -68,9 +91,21 @@
                         <span class="story_username">roy_usarov2.0</span>
                     </div>
                 </div>
+                
+                <!-- Clean Feed Post Type Filter Option Selector -->
+                <div class="filter_container" style="width: 650px; margin: 0 auto 20px auto; display: flex; justify-content: flex-end; align-items: center; gap: 8px; font-family: sans-serif;">
+                    <span style="color: darkgray; font-size: 14px;">Show:</span>
+                    <select id="post_type_filter" onchange="filterPosts()" style="background: #1a1a1a; color: white; border: 1px solid #333; padding: 6px 12px; border-radius: 8px; font-size: 14px; outline: none; cursor: pointer;">
+                        <option value="all">All Posts</option>
+                        <option value="image">Images</option>
+                        <option value="text">Text Only</option>
+                        <option value="video">Videos</option>
+                    </select>
+                </div>
+
                 <div class="post_container">
                     
-                </div>    
+                </div> 
             </div>
             <div class="follow_suggest_container">
                 <div class="your_profile">
@@ -155,6 +190,24 @@
         </div>
         <img src="longahhproject/arrow-circle-up.svg" id="scroll_up" style="display: none;" onclick="scrollUpfunc()">
     </div>
+
+    <div id="create_modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center;">
+    <div style="background:#1a1a1a; padding:2rem; border-radius:1rem; display:flex; flex-direction:column; gap:1rem; width:400px;">
+        <h2 style="color:white; margin:0;">Create Post</h2>
+        <input id="modal_caption" type="text" placeholder="Write a caption..." style="padding:0.8rem; border-radius:0.5rem; border:none; background:#303030; color:white; font-size:1rem;">
+        <input id="modal_image" type="text" placeholder="Paste image URL..." style="padding:0.8rem; border-radius:0.5rem; border:none; background:#303030; color:white; font-size:1rem;">
+        <select id="modal_type" style="padding:0.8rem; border-radius:0.5rem; border:none; background:#303030; color:white; font-size:1rem; cursor: pointer;">
+            <option value="image">Image Post</option>
+            <option value="text">Text Only Post</option>
+            <option value="video">Video Post (Static)</option>
+        </select>
+        <div style="display:flex; gap:1rem;">
+            <button onclick="submitNewPost()" style="flex:1; padding:0.8rem; background:lightskyblue; border:none; border-radius:0.5rem; cursor:pointer; font-size:1rem;">Post</button>
+            <button onclick="closeModal()" style="flex:1; padding:0.8rem; background:#303030; color:white; border:none; border-radius:0.5rem; cursor:pointer; font-size:1rem;">Cancel</button>
+        </div>
+    </div>
+</div>
+
     <script src="main_app.js"></script>
 </body>
 </html>
