@@ -425,9 +425,11 @@ a, .dot, .app_sign{
     left: 50%;
     transform: translateX(-50%);
     width: 500px;
-    top: 140px;
+    top: 170px;
     border-radius: 20px;
     height: 40px;
+    background-color: rgb(68, 68, 68);
+    color:white;
 }
 
 .comment_section{
@@ -476,4 +478,14 @@ a, .dot, .app_sign{
 .typing_indicator{
     font-style: italic;
     padding-left: 10px;
+}
+
+#scroll_up{
+    filter: invert(1);
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
 }
