@@ -133,7 +133,7 @@ function startup_posts()
                                         <img src="longahhproject/repost.svg" class="post_engage_icon">
                                         <span class="engage_number">${post.repost}</span>
                                     </div>
-                                    <div class="engage_share">
+                                    <div class="engage_share" onclick="openShareModal()">
                                         <img src="longahhproject/paper-plane-tilt.svg" class="post_engage_icon">
                                     </div>
                                 </div>
@@ -342,7 +342,7 @@ function createPost(username, pfp, image, caption, isVerified, type = "image")
                                 <div class="engage_repost">
                                     <img src="longahhproject/repost.svg" class="post_engage_icon">
                                 </div>
-                                <div class="engage_share">
+                                <div class="engage_share" onclick="openShareModal()">
                                     <img src="longahhproject/paper-plane-tilt.svg" class="post_engage_icon">
                                 </div>
                             </div>
@@ -383,4 +383,20 @@ function deletePost(id) {
         postEl.style.transform = "scale(0.95)";
         setTimeout(() => postEl.remove(), 400);
     }
+}
+function openShareModal()
+{
+    document.getElementById("share_modal").style.display = "flex";
+    document.getElementById("copy_confirm").style.display = "none";
+}
+
+function closeShareModal()
+{
+    document.getElementById("share_modal").style.display = "none";
+}
+
+function copyLink()
+{
+    navigator.clipboard.writeText("Copied!");
+    document.getElementById("copy_confirm").style.display = "block";
 }
