@@ -502,3 +502,24 @@ a, .dot, .app_sign{
     animation: postAppear 2.0s ease forwards;
     border-radius: 15px;
 }
+body.light_mode {
+    background-color: #f0f0f0;
+}
+
+body.light_mode .header_item,
+body.light_mode .post_desc,
+body.light_mode .title_username,
+body.light_mode .engage_number,
+body.light_mode .story_username {
+    color: #0C1014;
+}
+
+body.light_mode .sidebar_icons,
+body.light_mode .post_engage_icon,
+body.light_mode .send_comment {
+    filter: invert(0);
+}
+
+body.light_mode .suggest_username {
+    color: #0C1014;
+}
