@@ -59,10 +59,10 @@ body
 
 #icon 
 {
-    position: absolute;
+    position: absolute;  /* back to absolute so it doesn't push things down */
     right: 1rem;
     top: 50%;
-    transform: translateY(-60%);
+    transform: translateY(-50%);  
     color: #aaa;
     padding: 0;
     line-height: 0;
@@ -88,6 +88,7 @@ body
     position: relative;
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 1.4rem;
 }
 
 
@@ -197,3 +198,16 @@ a
     color: inherit;
 }
 
+#missing_pass
+{
+    position: absolute;
+    bottom: -1.4rem;
+    left: 0;
+    color: red;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}

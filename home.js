@@ -3,7 +3,7 @@ const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("pass");
 const emailLink = loginBtn.closest("a");
 const iconbutton = document.getElementById("icon");
-
+const missing = document.getElementById("missing_pass");
 
 loginBtn.addEventListener("click", function (e) 
 {
@@ -64,16 +64,26 @@ function correct_email (email)
 function correct_password(password)
 {
     if (password.length < 8)
+    {
+        missing.innerHTML = "password too short";
         return false;
-    if (!/[A-Z]/.test(password))
-        return false;
+    }
     if (!/[a-z]/.test(password))
+    {
+        missing.innerHTML = "password must contian letters";
         return false;
-    if (!/[0-9]/.test(password))
+    }
+    if (!/[A-Z]/.test(password))
+    {
+        missing.innerHTML = "password must contian a capital letter";
         return false;
-    if (!/[!@#$%^&*]/.test(password)) 
+    }
+    if (!/[0-9]/.test(password) || !/[!@#$%^&*]/.test(password))
+    {
+        missing.innerHTML = "password must contian a number or a special symbol";
         return false;
-
+    }
+    missing.innerHTML = "";
     return true;
 }
 
@@ -85,14 +95,10 @@ iconbutton.addEventListener("click", function()
     {
         passwordInput.type = "text";
         icon.src = "longahhproject/eye-light.svg";
-        icon.style.width = "3.5rem";
-        icon.style.length = "3.5rem";
     }
     else
     {
         passwordInput.type = "password";
         icon.src = "longahhproject/eye-slash-light.svg";
-        icon.style.width = "2.5rem";
-        icon.style.length = "2.5rem";
     }
 });
