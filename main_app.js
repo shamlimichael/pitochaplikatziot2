@@ -156,7 +156,10 @@ function filterPosts()
         if (!(post.caption.toLowerCase().includes(target.toLowerCase())))
             posthide.style.display = "none";
         else
+        {
             posthide.style.display = "block";
+           document.getElementById("like_popup_" + post.id).classList.remove("heart_pop");
+        }        
     })
 }
 
@@ -201,5 +204,17 @@ function typingIndicator(id)
         indicator.style.display = "none";
 }
 
+window.onscroll = function() {
+    let btn = document.getElementById("scroll_up");
+    if (window.scrollY > 100)
+        btn.style.display = "block";
+    else
+        btn.style.display = "none";
+}
+
+function scrollUpfunc()
+{
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
 startup_posts()
