@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    <!-- New Post Toast Notification Banner -->
     <div id="new_post_notification" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: lightskyblue; color: #0C1014; padding: 12px 24px; border-radius: 25px; font-weight: bold; z-index: 9999; box-shadow: 0 4px 15px rgba(0,0,0,0.6); font-family: sans-serif; opacity: 0; transition: opacity 0.3s ease;">
         There is a new post!
     </div>
@@ -76,7 +75,6 @@
                     </div>
                 </div>
                 
-                <!-- Clean Feed Post Type Filter Option Selector -->
                 <div class="filter_container" style="width: 650px; margin: 0 auto 20px auto; display: flex; justify-content: flex-end; align-items: center; gap: 8px; font-family: sans-serif;">
                     <span style="color: darkgray; font-size: 14px;">Show:</span>
                     <select id="post_type_filter" onchange="filterPosts()" style="background: #1a1a1a; color: white; border: 1px solid #333; padding: 6px 12px; border-radius: 8px; font-size: 14px; outline: none; cursor: pointer;">
@@ -192,7 +190,7 @@
     </div>
 </div>
 
-    <script src="main_app.js"></script>
+    
     <div id="share_modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center;">
     <div style="background:#1a1a1a; padding:2rem; border-radius:1rem; width:350px; display:flex; flex-direction:column; gap:1rem;">
         <h2 style="color:white; margin:0;">Share</h2>
@@ -214,5 +212,6 @@
         <button onclick="closeShareModal()" style="padding:0.8rem; background:#303030; color:white; border:none; border-radius:0.5rem; cursor:pointer;">Close</button>
     </div>
 </div>
+<script src="main_app.js"></script>
 </body>
 </html>

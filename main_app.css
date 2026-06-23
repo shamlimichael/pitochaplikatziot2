@@ -523,3 +523,31 @@ body.light_mode .send_comment {
 body.light_mode .suggest_username {
     color: #0C1014;
 }
+
+body.light_mode .suggest_title_seperation {
+    color: #0C1014;
+}
+
+body.light_mode .engage_number {
+    color: #0C1014;
+    filter: none;
+}
+
+body.light_mode .story_pfp {
+    border-color: #f0f0f0;
+}
+
+body.light_mode .engage_comment:hover,
+body.light_mode .engage_share:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light_mode .suggest_username:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light_mode #post_type_filter {
+    background: #e0e0e0!important;
+    color: #0C1014!important;
+    border-color: #aaaaaa!important;
+}
