@@ -1,3 +1,5 @@
+/*Michael-Shamli-219489044-Roy-Usarov-334862018-Ofek-Cohen-218519189*/
+
 let posts = [
     {
         id: 1,
@@ -93,7 +95,18 @@ function startup_posts()
                                 </div>
                             </div>
                             <div class="post_main">
-                                <img src="${post.image}" class="post_img">
+                                ${post.type === 'text' ? 
+                                    `<div style="background:#1e2329; padding:40px 20px; border-radius:15px; text-align:center; color:white; font-size:20px; font-family:sans-serif; border:1px solid #2d343f; box-sizing:border-box; width:100%; word-break:break-word;">${post.caption}</div>` : 
+                                    (post.type === 'video' ? 
+                                        `<div style="position:relative; width:100%; display:flex;">
+                                            <img src="${post.image || 'longahhproject/kai_havertz.jpg'}" class="post_img" style="width:100%;">
+                                            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:rgba(0,0,0,0.6); border-radius:50%; width:60px; height:60px; display:flex; justify-content:center; align-items:center;">
+                                                <div style="width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left: 20px solid white; margin-left: 4px;"></div>
+                                            </div>
+                                        </div>` : 
+                                        `<img src="${post.image}" class="post_img">`
+                                    )
+                                }
                                 <img src="longahhproject/heart-fill.svg" class="like_popup" id="like_popup_${post.id}">
                                 <div class="comment_section" id="comment_section_nu${post.id}" style="display:none">
                                     <div class="comment_list" id="comment_list_nu${post.id}">
@@ -150,15 +163,24 @@ function searchfunc()
 
 function filterPosts()
 {
-    let target = document.getElementById("search_bar").value;
+    let target = document.getElementById("search_bar").value.toLowerCase();
+    let typeFilter = document.getElementById("post_type_filter").value;
+
     posts.forEach(post=> {
         let posthide = document.getElementById("post_nu" + post.id);
-        if (!(post.caption.toLowerCase().includes(target.toLowerCase())))
-            posthide.style.display = "none";
-        else
+        if (!posthide) return;
+
+        let matchesSearch = post.caption.toLowerCase().includes(target);
+        let matchesType = (typeFilter === "all" || post.type === typeFilter);
+
+        if (matchesSearch && matchesType)
         {
             posthide.style.display = "block";
-           document.getElementById("like_popup_" + post.id).classList.remove("heart_pop");
+            document.getElementById("like_popup_" + post.id).classList.remove("heart_pop");
+        }
+        else
+        {
+            posthide.style.display = "none";
         }        
     })
 }
@@ -219,8 +241,37 @@ function scrollUpfunc()
 
 startup_posts()
 
+// Modal window handler methods to bind the creation controls
+function openModal() {
+    let modals = document.querySelectorAll("#create_modal");
+    modals.forEach(m => m.style.display = "flex");
+}
 
-function createPost(username, pfp, image, caption, isVerified)
+function closeModal() {
+    let modals = document.querySelectorAll("#create_modal");
+    modals.forEach(m => m.style.display = "none");
+    let captions = document.querySelectorAll("#modal_caption");
+    let images = document.querySelectorAll("#modal_image");
+    captions.forEach(c => c.value = "");
+    images.forEach(i => i.value = "");
+}
+
+function submitNewPost() {
+    let captionEl = document.querySelector("#modal_caption");
+    let imageEl = document.querySelector("#modal_image");
+    let typeEl = document.querySelector("#modal_type");
+    
+    let caption = captionEl ? captionEl.value : "";
+    let image = imageEl ? imageEl.value : "";
+    let type = typeEl ? typeEl.value : "image";
+    
+    if (!caption && !image) return;
+    
+    createPost("ilia.topuria", "longahhproject/topuria.webp", image, caption, true, type);
+    closeModal();
+}
+
+function createPost(username, pfp, image, caption, isVerified, type = "image")
 {
     let newPost = {
         id: posts.length + 1,
@@ -236,11 +287,11 @@ function createPost(username, pfp, image, caption, isVerified)
         isSaved: false,
         time: "just now",
         isVerified: isVerified,
-        type: "image"
+        type: type
     };
 
     posts.push(newPost);
-
+    
     let post = newPost;
     let container = document.querySelector(".post_container");
     let postHTML = `<div class="posts_div" id="post_nu${post.id}">
@@ -257,7 +308,18 @@ function createPost(username, pfp, image, caption, isVerified)
                             </div>
                         </div>
                         <div class="post_main">
-                            <img src="${post.image}" class="post_img">
+                            ${post.type === 'text' ? 
+                                `<div style="background:#1e2329; padding:40px 20px; border-radius:15px; text-align:center; color:white; font-size:20px; font-family:sans-serif; border:1px solid #2d343f; box-sizing:border-box; width:100%; word-break:break-word;">${post.caption}</div>` : 
+                                (post.type === 'video' ? 
+                                    `<div style="position:relative; width:100%; display:flex;">
+                                        <img src="${post.image}" class="post_img" style="width:100%;">
+                                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:rgba(0,0,0,0.6); border-radius:50%; width:60px; height:60px; display:flex; justify-content:center; align-items:center;">
+                                            <div style="width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left: 20px solid white; margin-left: 4px;"></div>
+                                        </div>
+                                    </div>` : 
+                                    `<img src="${post.image}" class="post_img">`
+                                )
+                            }
                             <img src="longahhproject/heart-fill.svg" class="like_popup" id="like_popup_${post.id}">
                             <div class="comment_section" id="comment_section_nu${post.id}" style="display:none">
                                 <div class="comment_list" id="comment_list_nu${post.id}"></div>
@@ -280,7 +342,6 @@ function createPost(username, pfp, image, caption, isVerified)
                                 </div>
                                 <div class="engage_repost">
                                     <img src="longahhproject/repost.svg" class="post_engage_icon">
-                                    <span class="engage_number">${post.repost}</span>
                                 </div>
                                 <div class="engage_share">
                                     <img src="longahhproject/paper-plane-tilt.svg" class="post_engage_icon">
@@ -295,31 +356,21 @@ function createPost(username, pfp, image, caption, isVerified)
                             ${post.isVerified ? `<img src="longahhproject/Twitter_Verified_Badge.svg.png" class="verfied_header">` : ""}
                             <span class="post_desc">${post.caption}</span>
                         </div>
-                    </div>`;
+                    </div>`
 
-    container.insertAdjacentHTML("afterbegin", postHTML);
-    let newPostEl = document.getElementById("post_nu" + post.id);
-    newPostEl.classList.add("post_flash");
-}
+    container.innerHTML += postHTML;
+    
+    // Automatically re-run filters to account for current dropdown settings
+    filterPosts();
 
-function openModal()
-{
-    let modal = document.getElementById("create_modal");
-    modal.style.display = "flex";
-}
-
-function closeModal()
-{
-    document.getElementById("create_modal").style.display = "none";
-    document.getElementById("modal_caption").value = "";
-    document.getElementById("modal_image").value = "";
-}
-
-function submitNewPost()
-{
-    let caption = document.getElementById("modal_caption").value;
-    let image = document.getElementById("modal_image").value;
-    if (caption === "" || image === "") return;
-    createPost("You", "longahhproject/pfp_empty.png", image, caption, false);
-    closeModal();
+    // Trigger toast message notification
+    let notification = document.getElementById("new_post_notification");
+    if (notification) {
+        notification.style.display = "block";
+        setTimeout(() => { notification.style.opacity = "1"; }, 10);
+        setTimeout(() => {
+            notification.style.opacity = "0";
+            setTimeout(() => { notification.style.display = "none"; }, 300);
+        }, 4000);
+    }
 }
