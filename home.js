@@ -1,3 +1,5 @@
+/*Michael-Shamli-219489044-Roy-Usarov-334862018-Ofek-Cohen-218519189*/
+
 const loginBtn = document.getElementById("log-in");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("pass");
