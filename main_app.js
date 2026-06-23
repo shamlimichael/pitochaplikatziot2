@@ -66,7 +66,7 @@ function likeorunlike(IDofpost)
         popup.classList.remove("heart_pop");
         void popup.offsetWidth
         popup.classList.add("heart_pop");
-    }   
+    }
     else
     {
         document.getElementById("heart_engage_" + IDofpost).src = "longahhproject/heart.svg";
@@ -218,3 +218,108 @@ function scrollUpfunc()
 }
 
 startup_posts()
+
+
+function createPost(username, pfp, image, caption, isVerified)
+{
+    let newPost = {
+        id: posts.length + 1,
+        username: username,
+        pfp: pfp,
+        image: image,
+        caption: caption,
+        likes: 0,
+        isLiked: false,
+        comments: [],
+        repost: 0,
+        isReposted: false,
+        isSaved: false,
+        time: "just now",
+        isVerified: isVerified,
+        type: "image"
+    };
+
+    posts.push(newPost);
+
+    let post = newPost;
+    let container = document.querySelector(".post_container");
+    let postHTML = `<div class="posts_div" id="post_nu${post.id}">
+                        <div class="post_header">
+                            <div class="header_left">
+                                <img src="${post.pfp}" class="pfp_header_post">
+                                <span class="header_item username_header">${post.username}</span>
+                                ${post.isVerified ? `<img src="longahhproject/Twitter_Verified_Badge.svg.png" class="verfied_header">` : ""}
+                                <span class="when_posted">• ${post.time}</span>
+                            </div>
+                            <div class="header_right">   
+                                <span class="follow_header">Follow</span>
+                                <span class="header_item three_dots">•••</span>
+                            </div>
+                        </div>
+                        <div class="post_main">
+                            <img src="${post.image}" class="post_img">
+                            <img src="longahhproject/heart-fill.svg" class="like_popup" id="like_popup_${post.id}">
+                            <div class="comment_section" id="comment_section_nu${post.id}" style="display:none">
+                                <div class="comment_list" id="comment_list_nu${post.id}"></div>
+                                <span class="typing_indicator" id="typing_nu${post.id}" style="display:none">typing a comment...</span>
+                                <div class="commentbar" id="commentbar_nu${post.id}">
+                                    <input type="text" class="typecom" id="typecom_nu${post.id}" placeholder="What did you think about the post?" oninput="typingIndicator(${post.id})">
+                                    <img src="longahhproject/paper-plane-tilt.svg" class="send_comment" id="send_comment_nu${post.id}" onclick="SendYourComment(${post.id})">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post_engage">
+                            <div class="engage_left">
+                                <div class="engage_like" onclick="likeorunlike(${post.id})">
+                                    <img src="longahhproject/heart.svg" class="post_engage_icon" id="heart_engage_${post.id}">
+                                    <span class="engage_number" id="numlikes_${post.id}">${post.likes}</span>
+                                </div>
+                                <div class="engage_comment" onclick="toggleComments(${post.id})">
+                                    <img src="longahhproject/comments.svg" class="post_engage_icon">
+                                    <span class="engage_number" id="numcomments_nu${post.id}">${post.comments.length}</span>
+                                </div>
+                                <div class="engage_repost">
+                                    <img src="longahhproject/repost.svg" class="post_engage_icon">
+                                    <span class="engage_number">${post.repost}</span>
+                                </div>
+                                <div class="engage_share">
+                                    <img src="longahhproject/paper-plane-tilt.svg" class="post_engage_icon">
+                                </div>
+                            </div>
+                            <div class="engage_right">
+                                <img src="longahhproject/save.svg" class="post_engage_icon">
+                            </div>
+                        </div>
+                        <div class="post_title">
+                            <span class="title_username username_header">${post.username}</span>
+                            ${post.isVerified ? `<img src="longahhproject/Twitter_Verified_Badge.svg.png" class="verfied_header">` : ""}
+                            <span class="post_desc">${post.caption}</span>
+                        </div>
+                    </div>`;
+
+    container.insertAdjacentHTML("afterbegin", postHTML);
+    let newPostEl = document.getElementById("post_nu" + post.id);
+    newPostEl.classList.add("post_flash");
+}
+
+function openModal()
+{
+    let modal = document.getElementById("create_modal");
+    modal.style.display = "flex";
+}
+
+function closeModal()
+{
+    document.getElementById("create_modal").style.display = "none";
+    document.getElementById("modal_caption").value = "";
+    document.getElementById("modal_image").value = "";
+}
+
+function submitNewPost()
+{
+    let caption = document.getElementById("modal_caption").value;
+    let image = document.getElementById("modal_image").value;
+    if (caption === "" || image === "") return;
+    createPost("You", "longahhproject/pfp_empty.png", image, caption, false);
+    closeModal();
+}
