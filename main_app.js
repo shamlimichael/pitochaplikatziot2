@@ -91,7 +91,7 @@ function startup_posts()
                                 </div>
                                 <div class="header_right">   
                                     <span class="follow_header">Follow</span>
-                                    <span class="header_item three_dots">•••</span>
+                                    <span class="header_item three_dots" onclick="deletePost(${post.id})" title="Delete post" style="color:#ff4d4d;">🗑</span>
                                 </div>
                             </div>
                             <div class="post_main">
@@ -303,7 +303,7 @@ function createPost(username, pfp, image, caption, isVerified, type = "image")
                             </div>
                             <div class="header_right">   
                                 <span class="follow_header">Follow</span>
-                                <span class="header_item three_dots">•••</span>
+                                <span class="header_item three_dots" onclick="deletePost(${post.id})" title="Delete post" style="color:#ff4d4d;">🗑</span>
                             </div>
                         </div>
                         <div class="post_main">
@@ -371,5 +371,16 @@ function createPost(username, pfp, image, caption, isVerified, type = "image")
             notification.style.opacity = "0";
             setTimeout(() => { notification.style.display = "none"; }, 300);
         }, 4000);
+    }
+    
+}
+function deletePost(id) {
+    posts = posts.filter(post => post.id !== id);
+    let postEl = document.getElementById("post_nu" + id);
+    if (postEl) {
+        postEl.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+        postEl.style.opacity = "0";
+        postEl.style.transform = "scale(0.95)";
+        setTimeout(() => postEl.remove(), 400);
     }
 }
