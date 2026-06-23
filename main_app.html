@@ -10,23 +10,6 @@
     <link rel="stylesheet" href="main_app.css">
 </head>
 
-<div id="create_modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center;">
-    <div style="background:#1a1a1a; padding:2rem; border-radius:1rem; display:flex; flex-direction:column; gap:1rem; width:400px;">
-        <h2 style="color:white; margin:0;">Create Post</h2>
-        <input id="modal_caption" type="text" placeholder="Write a caption..." style="padding:0.8rem; border-radius:0.5rem; border:none; background:#303030; color:white; font-size:1rem;">
-        <input id="modal_image" type="text" placeholder="Paste image URL..." style="padding:0.8rem; border-radius:0.5rem; border:none; background:#303030; color:white; font-size:1rem;">
-        <select id="modal_type" style="padding:0.8rem; border-radius:0.5rem; border:none; background:#303030; color:white; font-size:1rem; cursor: pointer;">
-            <option value="image">Image Post</option>
-            <option value="text">Text Only Post</option>
-            <option value="video">Video Post (Static)</option>
-        </select>
-        <div style="display:flex; gap:1rem;">
-            <button onclick="submitNewPost()" style="flex:1; padding:0.8rem; background:lightskyblue; border:none; border-radius:0.5rem; cursor:pointer; font-size:1rem;">Post</button>
-            <button onclick="closeModal()" style="flex:1; padding:0.8rem; background:#303030; color:white; border:none; border-radius:0.5rem; cursor:pointer; font-size:1rem;">Cancel</button>
-        </div>
-    </div>
-</div>
-
 <body>
     <!-- New Post Toast Notification Banner -->
     <div id="new_post_notification" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: lightskyblue; color: #0C1014; padding: 12px 24px; border-radius: 25px; font-weight: bold; z-index: 9999; box-shadow: 0 4px 15px rgba(0,0,0,0.6); font-family: sans-serif; opacity: 0; transition: opacity 0.3s ease;">
@@ -37,7 +20,7 @@
         <div class="sidebar_div">
             <img src="longahhproject\instagram-logo.svg" class="sidebar_icons">
             <div class="sidebar_center_div">
-                <img src="longahhproject\house.svg" class="sidebar_icons">a
+                <img src="longahhproject\house.svg" class="sidebar_icons">
                 <img src="longahhproject\play.svg" class="sidebar_icons">
                 <img src="longahhproject\paper-plane-tilt.svg" class="sidebar_icons">
                 <img src="longahhproject\magnifying-glass.svg" class="sidebar_icons" onclick="searchfunc()">

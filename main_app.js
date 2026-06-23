@@ -241,7 +241,6 @@ function scrollUpfunc()
 
 startup_posts()
 
-// Modal window handler methods to bind the creation controls
 function openModal() {
     let modals = document.querySelectorAll("#create_modal");
     modals.forEach(m => m.style.display = "flex");
@@ -359,11 +358,11 @@ function createPost(username, pfp, image, caption, isVerified, type = "image")
                     </div>`
 
     container.innerHTML += postHTML;
+    let newPostEl = document.getElementById("post_nu" + post.id);
+    newPostEl.classList.add("post_flash");
     
-    // Automatically re-run filters to account for current dropdown settings
     filterPosts();
 
-    // Trigger toast message notification
     let notification = document.getElementById("new_post_notification");
     if (notification) {
         notification.style.display = "block";
